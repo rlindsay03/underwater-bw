@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://2mqkpy74rrjn"]
+
+[ext_resource type="Script" uid="uid://kqaw4o5wayjs" path="res://scripts/Material.gd" id="1_04h57"]
+[ext_resource type="Texture2D" uid="uid://dt77ftolts36u" path="res://assets/sprites/props/tf_B_atlantisB.png" id="2_xkwnr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ph1h"]
+radius = 7.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x00qf"]
+atlas = ExtResource("2_xkwnr")
+region = Rect2(0.17703247, 57.089245, 30.428253, 41.697987)
+
+[node name="material" type="Area2D" unique_id=1249230394]
+script = ExtResource("1_04h57")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1340174343]
+shape = SubResource("CircleShape2D_4ph1h")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D" unique_id=469287236]
+texture = SubResource("AtlasTexture_x00qf")
