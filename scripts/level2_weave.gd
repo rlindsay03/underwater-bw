@@ -5,34 +5,59 @@ extends Control
 @onready var score_label: Label = $ScoreLabel
 @onready var player: AnimatedSprite2D = $AnimatedSprite2D
 @onready var basket_sprite: Sprite2D = $BasketSprite
+@onready var background: TextureRect = $TextureRect  
+@onready var crunch_label: Label = $Label
+
 
 const DIRECTIONS = ["left", "right", "up", "down"]
-const TIME_PER_PROMPT := 1.2
-const SEQUENCE_LENGTH := 35
+@export var sequence_length: int = 32
+@export var time_per_prompt_first_half: float = 1.2
+@export var time_per_prompt_second_half: float = 0.7
 
 var sequence: Array = []
 var current_index := 0
 var correct_hits := 0
 var time_left := 0.0
 var accepting_input := true
+var crunch_triggered := false
 
 func _ready() -> void:
 	player.animation_finished.connect(_on_player_animation_finished)
-	for i in SEQUENCE_LENGTH:
+	for i in sequence_length:
 		sequence.append(DIRECTIONS[randi() % DIRECTIONS.size()])
 	_show_current_prompt()
+	
+func _trigger_crunch_time() -> void:
+	crunch_triggered = true
+	var tween := create_tween()
+	tween.tween_property(background, "modulate", Color(1.0, 0.4, 0.4), 0.4)
+
+	crunch_label.modulate.a = 0.0
+	crunch_label.visible = true
+	var label_tween := create_tween()
+	label_tween.tween_property(crunch_label, "modulate:a", 1.0, 0.2)
+	label_tween.tween_interval(0.8)
+	label_tween.tween_property(crunch_label, "modulate:a", 0.0, 0.3)
 	
 func _on_player_animation_finished() -> void:
 	if player.animation in ["weave_success", "weave_fail"]:
 		player.play("idle")
+		
+func _get_time_for_current_prompt() -> float:
+	if current_index < sequence_length / 2:
+		return time_per_prompt_first_half
+	else:
+		return time_per_prompt_second_half
 
 func _show_current_prompt() -> void:
 	if current_index >= sequence.size():
 		_finish_weave()
 		return
+	if current_index == sequence_length / 2 and not crunch_triggered:
+		_trigger_crunch_time()
 	prompt_label.text = sequence[current_index].to_upper()
-	time_left = TIME_PER_PROMPT
-	timer_bar.max_value = TIME_PER_PROMPT
+	time_left = _get_time_for_current_prompt()
+	timer_bar.max_value = time_left
 	accepting_input = true
 
 func _process(delta: float) -> void:
@@ -41,7 +66,7 @@ func _process(delta: float) -> void:
 	time_left -= delta
 	timer_bar.value = time_left
 
-	var ratio := time_left / TIME_PER_PROMPT
+	var ratio := time_left / timer_bar.max_value
 	if ratio > 0.6:
 		timer_bar.modulate = Color.GREEN
 	elif ratio > 0.3:

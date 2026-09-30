@@ -1,13 +1,14 @@
 [gd_scene format=4 uid="uid://l1l1uceauye4"]
 
+[ext_resource type="Script" uid="uid://cjyshiungkiex" path="res://scripts/level2_breath_timer.gd" id="1_6a5i7"]
 [ext_resource type="Texture2D" uid="uid://b0n7rnrabliqh" path="res://assets/tileset/tf_A2_atlantis.png" id="1_7mycd"]
-[ext_resource type="Script" uid="uid://drtrj26xwqd46" path="res://scripts/breath_timer.gd" id="1_272bh"]
 [ext_resource type="Texture2D" uid="uid://b2jfe0wdjot58" path="res://assets/tileset/tf_A5_atlantisA.png" id="2_272bh"]
 [ext_resource type="Texture2D" uid="uid://bh05nioh2ejvp" path="res://assets/tileset/tf_A5_atlantisB.png" id="3_5vw27"]
 [ext_resource type="Texture2D" uid="uid://cp5j67om00fli" path="res://assets/sprites/props/tf_B_atlantisA.png" id="4_kek77"]
 [ext_resource type="Texture2D" uid="uid://dt77ftolts36u" path="res://assets/sprites/props/tf_B_atlantisB.png" id="5_4c57u"]
 [ext_resource type="PackedScene" uid="uid://2at4545my2nj" path="res://scenes/Player.tscn" id="6_efxa6"]
-[ext_resource type="Script" uid="uid://bguy01p711p5" path="res://scripts/exit_point.gd" id="9_kek77"]
+[ext_resource type="Script" uid="uid://bl2pig5w5wsrt" path="res://scripts/level2_exit_point.gd" id="8_6a5i7"]
+[ext_resource type="PackedScene" uid="uid://2mqkpy74rrjn" path="res://scenes/Material.tscn" id="9_gkfbt"]
 
 [sub_resource type="Gradient" id="Gradient_kek77"]
 offsets = PackedFloat32Array(0.12, 0.424, 0.764)
@@ -3845,8 +3846,56 @@ sources/1 = SubResource("TileSetAtlasSource_2cqfq")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kf4mj"]
 size = Vector2(33, 63)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkfbt"]
+atlas = ExtResource("5_4c57u")
+region = Rect2(0.17703247, 256.1154, 32.761627, 35.493347)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_akdx8"]
+atlas = ExtResource("5_4c57u")
+region = Rect2(132.7344, 420.43875, 30.428253, 30.169342)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jrfq"]
+atlas = ExtResource("5_4c57u")
+region = Rect2(131.10278, 412.9157, 33.371918, 40.01889)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f86av"]
+atlas = ExtResource("5_4c57u")
+region = Rect2(4.895508, 415.59485, 30.428253, 32.920624)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_grle2"]
+atlas = ExtResource("5_4c57u")
+region = Rect2(225.72787, 415.35312, 27.666595, 36.476654)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1doj"]
+atlas = ExtResource("5_4c57u")
+region = Rect2(1.2507019, 382.1568, 30.428253, 38.732605)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inkh8"]
+atlas = ExtResource("5_4c57u")
+region = Rect2(-3.0496368, 257.45343, 30.428253, 30.093903)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bplh8"]
+atlas = ExtResource("5_4c57u")
+region = Rect2(129.87402, 253.24246, 30.428253, 37.666016)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qeoi"]
+atlas = ExtResource("5_4c57u")
+region = Rect2(131.16525, 418.66174, 30.428253, 33.283875)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ck653"]
+atlas = ExtResource("5_4c57u")
+region = Rect2(-0.89663696, 250.35056, 30.428253, 41.697987)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_floib"]
+atlas = ExtResource("5_4c57u")
+region = Rect2(0.17703247, 342.68646, 30.428253, 41.697987)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67q1t"]
+atlas = ExtResource("5_4c57u")
+region = Rect2(1.2507172, 220.00003, 30.428253, 32.32257)
+
 [node name="Main" type="Node2D" unique_id=77208902]
-script = ExtResource("1_272bh")
+script = ExtResource("1_6a5i7")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=2039185170]
 texture_filter = 1
@@ -3898,8 +3947,133 @@ grow_horizontal = 2
 max_value = 30.0
 
 [node name="ExitPoint" type="Area2D" parent="." unique_id=1906768151]
-script = ExtResource("9_kek77")
+script = ExtResource("8_6a5i7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitPoint" unique_id=1303142491]
 position = Vector2(256.5, -32.5)
 shape = SubResource("RectangleShape2D_kf4mj")
+
+[node name="material" parent="." unique_id=1249230394 instance=ExtResource("9_gkfbt")]
+position = Vector2(32, 294)
+
+[node name="material2" parent="." unique_id=899589994 instance=ExtResource("9_gkfbt")]
+position = Vector2(165, 296)
+
+[node name="Sprite2D" parent="material2/CollisionShape2D" parent_id_path=PackedInt32Array(899589994, 1340174343) index="0" unique_id=469287236]
+texture = SubResource("AtlasTexture_gkfbt")
+
+[node name="material3" parent="." unique_id=615716949 instance=ExtResource("9_gkfbt")]
+position = Vector2(253, 301)
+
+[node name="material4" parent="." unique_id=116368813 instance=ExtResource("9_gkfbt")]
+position = Vector2(251, 168)
+
+[node name="material5" parent="." unique_id=90791956 instance=ExtResource("9_gkfbt")]
+position = Vector2(32, 87)
+
+[node name="material6" parent="." unique_id=1137402256 instance=ExtResource("9_gkfbt")]
+position = Vector2(32, 29)
+
+[node name="Sprite2D" parent="material6/CollisionShape2D" parent_id_path=PackedInt32Array(1137402256, 1340174343) index="0" unique_id=469287236]
+texture = SubResource("AtlasTexture_akdx8")
+
+[node name="material7" parent="." unique_id=1811975961 instance=ExtResource("9_gkfbt")]
+position = Vector2(33, 186)
+
+[node name="Sprite2D" parent="material7/CollisionShape2D" parent_id_path=PackedInt32Array(1811975961, 1340174343) index="0" unique_id=469287236]
+texture = SubResource("AtlasTexture_5jrfq")
+
+[node name="material8" parent="." unique_id=260968238 instance=ExtResource("9_gkfbt")]
+position = Vector2(116, 185)
+
+[node name="material9" parent="." unique_id=1261765198 instance=ExtResource("9_gkfbt")]
+position = Vector2(88, 245)
+
+[node name="material10" parent="." unique_id=2076162930 instance=ExtResource("9_gkfbt")]
+position = Vector2(250, 235)
+
+[node name="Sprite2D" parent="material10/CollisionShape2D" parent_id_path=PackedInt32Array(2076162930, 1340174343) index="0" unique_id=469287236]
+texture = SubResource("AtlasTexture_f86av")
+
+[node name="material11" parent="." unique_id=932676201 instance=ExtResource("9_gkfbt")]
+position = Vector2(187, 25)
+
+[node name="Sprite2D" parent="material11/CollisionShape2D" parent_id_path=PackedInt32Array(932676201, 1340174343) index="0" unique_id=469287236]
+position = Vector2(-1, 0)
+texture = SubResource("AtlasTexture_grle2")
+
+[node name="material12" parent="." unique_id=1293438547 instance=ExtResource("9_gkfbt")]
+position = Vector2(96, 81)
+
+[node name="material13" parent="." unique_id=235276179 instance=ExtResource("9_gkfbt")]
+position = Vector2(190, 159)
+
+[node name="Sprite2D" parent="material13/CollisionShape2D" parent_id_path=PackedInt32Array(235276179, 1340174343) index="0" unique_id=469287236]
+texture = SubResource("AtlasTexture_t1doj")
+
+[node name="material14" parent="." unique_id=210473390 instance=ExtResource("9_gkfbt")]
+position = Vector2(316, 283)
+
+[node name="Sprite2D" parent="material14/CollisionShape2D" parent_id_path=PackedInt32Array(210473390, 1340174343) index="0" unique_id=469287236]
+texture = SubResource("AtlasTexture_inkh8")
+
+[node name="material15" parent="." unique_id=1810070666 instance=ExtResource("9_gkfbt")]
+position = Vector2(338, 213)
+
+[node name="material16" parent="." unique_id=975956711 instance=ExtResource("9_gkfbt")]
+position = Vector2(391, 292)
+
+[node name="material17" parent="." unique_id=507517433 instance=ExtResource("9_gkfbt")]
+position = Vector2(482, 279)
+
+[node name="Sprite2D" parent="material17/CollisionShape2D" parent_id_path=PackedInt32Array(507517433, 1340174343) index="0" unique_id=469287236]
+texture = SubResource("AtlasTexture_bplh8")
+
+[node name="material18" parent="." unique_id=532837180 instance=ExtResource("9_gkfbt")]
+position = Vector2(486, 151)
+
+[node name="material19" parent="." unique_id=1863638332 instance=ExtResource("9_gkfbt")]
+position = Vector2(329, 153)
+
+[node name="Sprite2D" parent="material19/CollisionShape2D" parent_id_path=PackedInt32Array(1863638332, 1340174343) index="0" unique_id=469287236]
+texture = SubResource("AtlasTexture_3qeoi")
+
+[node name="material20" parent="." unique_id=1710771696 instance=ExtResource("9_gkfbt")]
+position = Vector2(489, 39)
+
+[node name="Sprite2D" parent="material20/CollisionShape2D" parent_id_path=PackedInt32Array(1710771696, 1340174343) index="0" unique_id=469287236]
+texture = SubResource("AtlasTexture_ck653")
+
+[node name="material21" parent="." unique_id=1676430787 instance=ExtResource("9_gkfbt")]
+position = Vector2(256, 100)
+
+[node name="Sprite2D" parent="material21/CollisionShape2D" parent_id_path=PackedInt32Array(1676430787, 1340174343) index="0" unique_id=469287236]
+texture = SubResource("AtlasTexture_floib")
+
+[node name="material22" parent="." unique_id=282673089 instance=ExtResource("9_gkfbt")]
+position = Vector2(412, 33)
+
+[node name="material23" parent="." unique_id=1133024325 instance=ExtResource("9_gkfbt")]
+position = Vector2(384, 93)
+
+[node name="material24" parent="." unique_id=62131938 instance=ExtResource("9_gkfbt")]
+position = Vector2(260, 31)
+
+[node name="material25" parent="." unique_id=512213567 instance=ExtResource("9_gkfbt")]
+position = Vector2(412, 200)
+
+[node name="Sprite2D" parent="material25/CollisionShape2D" parent_id_path=PackedInt32Array(512213567, 1340174343) index="0" unique_id=469287236]
+texture = SubResource("AtlasTexture_67q1t")
+
+[editable path="material2"]
+[editable path="material6"]
+[editable path="material7"]
+[editable path="material10"]
+[editable path="material11"]
+[editable path="material13"]
+[editable path="material14"]
+[editable path="material17"]
+[editable path="material19"]
+[editable path="material20"]
+[editable path="material21"]
+[editable path="material25"]
