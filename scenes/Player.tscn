@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://disn7x5e6pqrk" path="res://assets/sprites/player/weava.png" id="2_3li8b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kf4mj"]
-radius = 9.0
+radius = 8.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mdl7e"]
 atlas = ExtResource("2_3li8b")

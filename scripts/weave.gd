@@ -8,7 +8,7 @@ extends Control
 
 const DIRECTIONS = ["left", "right", "up", "down"]
 const TIME_PER_PROMPT := 1.2
-const SEQUENCE_LENGTH := 16
+const SEQUENCE_LENGTH := 32
 
 var sequence: Array = []
 var current_index := 0
