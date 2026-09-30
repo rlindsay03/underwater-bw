@@ -4,10 +4,11 @@ extends Control
 @onready var timer_bar: ProgressBar = $TimerBar
 @onready var score_label: Label = $ScoreLabel
 @onready var player: AnimatedSprite2D = $AnimatedSprite2D
+@onready var basket_sprite: Sprite2D = $BasketSprite
 
 const DIRECTIONS = ["left", "right", "up", "down"]
 const TIME_PER_PROMPT := 1.2
-const SEQUENCE_LENGTH := 8
+const SEQUENCE_LENGTH := 16
 
 var sequence: Array = []
 var current_index := 0
@@ -73,8 +74,19 @@ func _register_result(correct: bool) -> void:
 	score_label.text = "Hits: %d/%d" % [correct_hits, sequence.size()]
 	_show_current_prompt()
 
+func _show_basket_result() -> void:
+	var texture_path := ""
+	match GameData.stars:
+		3: texture_path = "res://assets/sprites/props/basket_great.png"
+		2: texture_path = "res://assets/sprites/props/basket_good.png"
+		1: texture_path = "res://assets/sprites/props/basket_bad.png"
+		_: texture_path = "res://assets/sprites/props/basket_fail.png"
+	basket_sprite.texture = load(texture_path)
+	basket_sprite.visible = true
+
 func _finish_weave() -> void:
 	GameData.weave_accuracy = float(correct_hits) / float(sequence.size())
 	GameData.calculate_final_score()
 	prompt_label.text = "Done! " + str(GameData.stars) + " stars"
 	print("Final score: ", GameData.final_score, " Stars: ", GameData.stars)
+	_show_basket_result()

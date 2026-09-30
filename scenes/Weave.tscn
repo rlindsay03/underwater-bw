@@ -3,6 +3,16 @@
 [ext_resource type="Script" uid="uid://ggmu43lmusji" path="res://scripts/weave.gd" id="1_d8vqe"]
 [ext_resource type="Texture2D" uid="uid://disn7x5e6pqrk" path="res://assets/sprites/player/weava.png" id="2_k6yd2"]
 
+[sub_resource type="Gradient" id="Gradient_x00qf"]
+offsets = PackedFloat32Array(0.12, 0.424, 0.764)
+colors = PackedColorArray(0.73075265, 0.6509094, 0.35700056, 1, 0, 0.66566265, 0.5964562, 1, 0.047058824, 0.22745098, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_k6yd2"]
+gradient = SubResource("Gradient_x00qf")
+width = 1
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_mdl7e"]
 atlas = ExtResource("2_k6yd2")
 region = Rect2(576, 0, 32, 32)
@@ -189,6 +199,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_d8vqe")
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2131075492]
+texture_filter = 1
+layout_mode = 0
+offset_left = -255.0
+offset_top = -237.0
+offset_right = 1467.0
+offset_bottom = 781.0
+texture = SubResource("GradientTexture2D_k6yd2")
+
 [node name="PromptLabel" type="Label" parent="." unique_id=693818644]
 layout_mode = 1
 anchors_preset = -1
@@ -230,3 +249,7 @@ position = Vector2(580, 478)
 scale = Vector2(7.202, 7)
 sprite_frames = SubResource("SpriteFrames_t0ppb")
 animation = &"idle"
+
+[node name="BasketSprite" type="Sprite2D" parent="." unique_id=1856292062]
+position = Vector2(575, 150)
+scale = Vector2(7, 7)
