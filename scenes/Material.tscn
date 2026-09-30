@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://2mqkpy74rrjn"]
 
-[ext_resource type="Script" uid="uid://kqaw4o5wayjs" path="res://scripts/Material.gd" id="1_04h57"]
+[ext_resource type="Script" uid="uid://kqaw4o5wayjs" path="res://scripts/material.gd" id="1_04h57"]
 [ext_resource type="Texture2D" uid="uid://dt77ftolts36u" path="res://assets/sprites/props/tf_B_atlantisB.png" id="2_xkwnr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ph1h"]

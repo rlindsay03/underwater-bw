@@ -3,6 +3,7 @@ extends Control
 @onready var prompt_label: Label = $PromptLabel
 @onready var timer_bar: ProgressBar = $TimerBar
 @onready var score_label: Label = $ScoreLabel
+@onready var player: AnimatedSprite2D = $AnimatedSprite2D
 
 const DIRECTIONS = ["left", "right", "up", "down"]
 const TIME_PER_PROMPT := 1.2
@@ -15,9 +16,14 @@ var time_left := 0.0
 var accepting_input := true
 
 func _ready() -> void:
+	player.animation_finished.connect(_on_player_animation_finished)
 	for i in SEQUENCE_LENGTH:
 		sequence.append(DIRECTIONS[randi() % DIRECTIONS.size()])
 	_show_current_prompt()
+	
+func _on_player_animation_finished() -> void:
+	if player.animation in ["weave_success", "weave_fail"]:
+		player.play("idle")
 
 func _show_current_prompt() -> void:
 	if current_index >= sequence.size():
@@ -60,12 +66,15 @@ func _register_result(correct: bool) -> void:
 	accepting_input = false
 	if correct:
 		correct_hits += 1
+		player.play("weave_success")
+	else:
+		player.play("weave_fail")
 	current_index += 1
 	score_label.text = "Hits: %d/%d" % [correct_hits, sequence.size()]
 	_show_current_prompt()
 
 func _finish_weave() -> void:
-	var weave_accuracy := float(correct_hits) / float(sequence.size())
-	prompt_label.text = "Done!"
-	print("Weave accuracy: ", weave_accuracy)
-	# TODO: combine with materials_collected/total_materials for final score
+	GameData.weave_accuracy = float(correct_hits) / float(sequence.size())
+	GameData.calculate_final_score()
+	prompt_label.text = "Done! " + str(GameData.stars) + " stars"
+	print("Final score: ", GameData.final_score, " Stars: ", GameData.stars)

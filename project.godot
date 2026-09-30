@@ -14,6 +14,10 @@ config/name="Underwater-BW"
 run/main_scene="uid://bkumngwh6h2ac"
 config/features=PackedStringArray("4.7", "Forward Plus")
 
+[autoload]
+
+GameData="*uid://dgl3db2lwpb73"
+
 [display]
 
 window/stretch/mode="canvas_items"
