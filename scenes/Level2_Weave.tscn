@@ -279,3 +279,18 @@ theme_override_font_sizes/font_size = 30
 text = "CRUNCH TIME ! SPEED UP !"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ContinueButton2" type="Button" parent="." unique_id=2085661459]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.697
+anchor_right = 1.0
+anchor_bottom = 0.79200006
+offset_top = 0.07699585
+offset_bottom = -0.028015137
+grow_horizontal = 2
+grow_vertical = 2
+text = "Continue"
+
+[connection signal="pressed" from="ContinueButton2" to="." method="_on_continue_button_2_pressed"]

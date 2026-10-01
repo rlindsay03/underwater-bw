@@ -262,3 +262,18 @@ animation = &"idle"
 [node name="BasketSprite" type="Sprite2D" parent="." unique_id=1856292062]
 position = Vector2(575, 150)
 scale = Vector2(7, 7)
+
+[node name="ContinueButton1" type="Button" parent="." unique_id=2132257361]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.697
+anchor_right = 1.0
+anchor_bottom = 0.79200006
+offset_top = 0.07699585
+offset_bottom = -0.028015137
+grow_horizontal = 2
+grow_vertical = 2
+text = "Continue"
+
+[connection signal="pressed" from="ContinueButton1" to="." method="_on_continue_button_1_pressed"]

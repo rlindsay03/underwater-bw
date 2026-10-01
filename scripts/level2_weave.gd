@@ -8,6 +8,7 @@ extends Control
 @onready var background: TextureRect = $TextureRect  
 @onready var crunch_label: Label = $Label
 @onready var pause_menu: Control = $PauseMenu
+@onready var continue_button: Button = $ContinueButton2
 
 
 const DIRECTIONS = ["left", "right", "up", "down"]
@@ -114,6 +115,7 @@ func _show_basket_result() -> void:
 		_: texture_path = "res://assets/sprites/props/basket_fail.png"
 	basket_sprite.texture = load(texture_path)
 	basket_sprite.visible = true
+	continue_button.visible = true
 
 func _finish_weave() -> void:
 	GameData.weave_accuracy = float(correct_hits) / float(sequence.size())
@@ -121,3 +123,7 @@ func _finish_weave() -> void:
 	prompt_label.text = "Done! " + str(GameData.stars) + " stars"
 	print("Final score: ", GameData.final_score, " Stars: ", GameData.stars)
 	_show_basket_result()
+
+
+func _on_continue_button_2_pressed() -> void:
+	get_tree().change_scene_to_file("res://Menu.tscn")

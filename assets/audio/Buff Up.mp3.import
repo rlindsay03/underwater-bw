@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cwcwt44qyidmm"
+path="res://.godot/imported/Buff Up.mp3-e75d2995eee0ea0a7f1c766672ece7f2.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Buff Up.mp3"
+dest_files=["res://.godot/imported/Buff Up.mp3-e75d2995eee0ea0a7f1c766672ece7f2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
