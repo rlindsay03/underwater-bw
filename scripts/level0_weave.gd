@@ -7,6 +7,7 @@ extends Control
 @onready var basket_sprite: Sprite2D = $BasketSprite
 @onready var instruction_label: Label = $WeaveInstructions
 @onready var instruction_rect: ColorRect = $WeaveRect
+@onready var pause_menu: Control = $PauseMenu
 
 const DIRECTIONS = ["left", "right", "up", "down"]
 const TIME_PER_PROMPT := 2
@@ -25,6 +26,10 @@ func _ready() -> void:
 	_show_current_prompt()
 	instruction_label.visible = true
 	instruction_rect.visible = true
+	
+func _toggle_pause() -> void:
+	get_tree().paused = not get_tree().paused
+	pause_menu.visible = get_tree().paused
 	
 func _on_player_animation_finished() -> void:
 	if player.animation in ["weave_success", "weave_fail"]:
@@ -64,6 +69,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("ui_right"): pressed = "right"
 	elif event.is_action_pressed("ui_up"): pressed = "up"
 	elif event.is_action_pressed("ui_down"): pressed = "down"
+	elif event.is_action_pressed("ui_cancel"): _toggle_pause()
 	else: return
 	_register_result(pressed == sequence[current_index])
 

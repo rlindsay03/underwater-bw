@@ -1,5 +1,17 @@
 [gd_scene format=3 uid="uid://bjw8p1o6bnpeo"]
 
+[ext_resource type="Script" uid="uid://bvee7b60j7yn4" path="res://scripts/menu.gd" id="1_5yleq"]
+[ext_resource type="Texture2D" uid="uid://c1cufyfmqd852" path="res://assets/sprites/player/weava2.png" id="2_ylpcl"]
+
+[sub_resource type="Gradient" id="Gradient_x00qf"]
+offsets = PackedFloat32Array(0.1875, 1)
+colors = PackedColorArray(0.14117648, 0.17254902, 0.14117648, 1, 0.4, 0.7254902, 0.47058824, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kf4mj"]
+gradient = SubResource("Gradient_x00qf")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
 [node name="Menu" type="Control" unique_id=737996549]
 layout_mode = 3
 anchors_preset = 15
@@ -9,6 +21,16 @@ offset_right = 5.0
 offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_5yleq")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=27602746]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_kf4mj")
 
 [node name="Title" type="Label" parent="." unique_id=532029678]
 layout_mode = 1
@@ -30,13 +52,33 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Play" type="Button" parent="." unique_id=863954244]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.5
+offset_top = 100.0
+offset_right = 47.5
+offset_bottom = 137.29999
+grow_horizontal = 2
+grow_vertical = 2
+action_mode = 0
 text = "Play"
 
 [node name="Quit" type="Button" parent="." unique_id=815628788]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 531.0
+offset_top = 475.0
+offset_right = 626.0
+offset_bottom = 512.3
 text = "Quit"
+
+[node name="Weava2" type="Sprite2D" parent="." unique_id=1547158499]
+position = Vector2(580, 152)
+scale = Vector2(6.031249, 5.656251)
+texture = ExtResource("2_ylpcl")
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

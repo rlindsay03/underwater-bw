@@ -3,6 +3,7 @@ extends Node2D
 @onready var breath_timer: Timer = $BreathTimer
 @onready var breath_bar: ProgressBar = $CanvasLayer/Control/BreathBar
 @onready var player: CharacterBody2D = $Player/CharacterBody2D
+@onready var pause_menu: Control = $CanvasLayer/Control/PauseMenu
 
 var breath_time: float
 var materials_collected: int = 0
@@ -20,6 +21,14 @@ func _ready() -> void:
 	GameData.total_materials = materials.size()
 	for m in materials:
 		m.collected.connect(_on_material_collected)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		_toggle_pause()
+
+func _toggle_pause() -> void:
+	get_tree().paused = not get_tree().paused
+	pause_menu.visible = get_tree().paused
 
 func _process(delta: float) -> void:
 	if breath_timer.time_left > 0:

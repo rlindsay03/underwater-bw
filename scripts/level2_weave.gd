@@ -7,6 +7,7 @@ extends Control
 @onready var basket_sprite: Sprite2D = $BasketSprite
 @onready var background: TextureRect = $TextureRect  
 @onready var crunch_label: Label = $Label
+@onready var pause_menu: Control = $PauseMenu
 
 
 const DIRECTIONS = ["left", "right", "up", "down"]
@@ -26,6 +27,10 @@ func _ready() -> void:
 	for i in sequence_length:
 		sequence.append(DIRECTIONS[randi() % DIRECTIONS.size()])
 	_show_current_prompt()
+	
+func _toggle_pause() -> void:
+	get_tree().paused = not get_tree().paused
+	pause_menu.visible = get_tree().paused
 	
 func _trigger_crunch_time() -> void:
 	crunch_triggered = true
@@ -85,6 +90,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("ui_right"): pressed = "right"
 	elif event.is_action_pressed("ui_up"): pressed = "up"
 	elif event.is_action_pressed("ui_down"): pressed = "down"
+	elif event.is_action_pressed("ui_cancel"): _toggle_pause()
 	else: return
 	_register_result(pressed == sequence[current_index])
 

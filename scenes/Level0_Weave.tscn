@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://hgfmghj4130s"]
 
 [ext_resource type="Script" uid="uid://bm5cg1thsssx6" path="res://scripts/level0_weave.gd" id="1_h62yj"]
+[ext_resource type="PackedScene" uid="uid://dco8ma3y0yl0c" path="res://scenes/PauseMenu.tscn" id="2_5iaq2"]
 [ext_resource type="Texture2D" uid="uid://disn7x5e6pqrk" path="res://assets/sprites/player/weava.png" id="2_faj6k"]
 
 [sub_resource type="Gradient" id="Gradient_kek77"]
@@ -207,6 +208,14 @@ offset_top = -237.0
 offset_right = 1467.0
 offset_bottom = 781.0
 texture = SubResource("GradientTexture2D_kf4mj")
+
+[node name="PauseMenu" parent="." unique_id=492777670 instance=ExtResource("2_5iaq2")]
+visible = false
+layout_mode = 1
+offset_left = 0.0
+offset_top = 100.0
+offset_right = 0.0
+offset_bottom = 100.0
 
 [node name="PromptLabel" type="Label" parent="." unique_id=693818644]
 layout_mode = 1

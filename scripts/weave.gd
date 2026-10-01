@@ -5,6 +5,7 @@ extends Control
 @onready var score_label: Label = $ScoreLabel
 @onready var player: AnimatedSprite2D = $AnimatedSprite2D
 @onready var basket_sprite: Sprite2D = $BasketSprite
+@onready var pause_menu: Control = $PauseMenu
 
 const DIRECTIONS = ["left", "right", "up", "down"]
 const TIME_PER_PROMPT := 1.2
@@ -21,6 +22,11 @@ func _ready() -> void:
 	for i in SEQUENCE_LENGTH:
 		sequence.append(DIRECTIONS[randi() % DIRECTIONS.size()])
 	_show_current_prompt()
+	
+
+func _toggle_pause() -> void:
+	get_tree().paused = not get_tree().paused
+	pause_menu.visible = get_tree().paused
 	
 func _on_player_animation_finished() -> void:
 	if player.animation in ["weave_success", "weave_fail"]:
@@ -60,6 +66,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("ui_right"): pressed = "right"
 	elif event.is_action_pressed("ui_up"): pressed = "up"
 	elif event.is_action_pressed("ui_down"): pressed = "down"
+	elif event.is_action_pressed("ui_cancel"): _toggle_pause()
 	else: return
 	_register_result(pressed == sequence[current_index])
 
