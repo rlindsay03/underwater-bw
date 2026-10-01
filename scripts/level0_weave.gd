@@ -5,10 +5,12 @@ extends Control
 @onready var score_label: Label = $ScoreLabel
 @onready var player: AnimatedSprite2D = $AnimatedSprite2D
 @onready var basket_sprite: Sprite2D = $BasketSprite
+@onready var instruction_label: Label = $WeaveInstructions
+@onready var instruction_rect: ColorRect = $WeaveRect
 
 const DIRECTIONS = ["left", "right", "up", "down"]
-const TIME_PER_PROMPT := 1.2
-const SEQUENCE_LENGTH := 35
+const TIME_PER_PROMPT := 2
+const SEQUENCE_LENGTH := 10
 
 var sequence: Array = []
 var current_index := 0
@@ -21,6 +23,8 @@ func _ready() -> void:
 	for i in SEQUENCE_LENGTH:
 		sequence.append(DIRECTIONS[randi() % DIRECTIONS.size()])
 	_show_current_prompt()
+	instruction_label.visible = true
+	instruction_rect.visible = true
 	
 func _on_player_animation_finished() -> void:
 	if player.animation in ["weave_success", "weave_fail"]:
@@ -75,6 +79,8 @@ func _register_result(correct: bool) -> void:
 	_show_current_prompt()
 
 func _show_basket_result() -> void:
+	instruction_label.visible = false
+	instruction_rect.visible = false
 	var texture_path := ""
 	match GameData.stars:
 		3: texture_path = "res://assets/sprites/props/basket_great.png"

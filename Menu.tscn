@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://bjw8p1o6bnpeo"]
+
+[node name="Menu" type="Control" unique_id=737996549]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 5.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="." unique_id=532029678]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.163
+anchor_top = 0.39200002
+anchor_right = 0.837
+anchor_bottom = 0.60800004
+offset_left = 0.40899658
+offset_top = -0.3000183
+offset_right = -0.40899658
+offset_bottom = 0.2999878
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "UNDERWATER BASKET WEAVING:
+THE GAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Play" type="Button" parent="." unique_id=863954244]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Play"
+
+[node name="Quit" type="Button" parent="." unique_id=815628788]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Quit"
