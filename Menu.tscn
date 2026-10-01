@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bvee7b60j7yn4" path="res://scripts/menu.gd" id="1_5yleq"]
 [ext_resource type="Texture2D" uid="uid://c1cufyfmqd852" path="res://assets/sprites/player/weava2.png" id="2_ylpcl"]
+[ext_resource type="AudioStream" uid="uid://bk7rsdiy3msjv" path="res://assets/audio/Mega-bot-pipes-forest.ogg" id="3_ylpcl"]
 
 [sub_resource type="Gradient" id="Gradient_x00qf"]
 offsets = PackedFloat32Array(0.1875, 1)
@@ -79,6 +80,10 @@ text = "Quit"
 position = Vector2(580, 152)
 scale = Vector2(6.031249, 5.656251)
 texture = ExtResource("2_ylpcl")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=794809746]
+stream = ExtResource("3_ylpcl")
+autoplay = true
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

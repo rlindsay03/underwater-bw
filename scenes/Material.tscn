@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://kqaw4o5wayjs" path="res://scripts/material.gd" id="1_04h57"]
 [ext_resource type="Texture2D" uid="uid://dt77ftolts36u" path="res://assets/sprites/props/tf_B_atlantisB.png" id="2_xkwnr"]
+[ext_resource type="AudioStream" uid="uid://cwcwt44qyidmm" path="res://assets/audio/Buff Up.mp3" id="3_xkwnr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ph1h"]
 radius = 7.0
@@ -18,3 +19,7 @@ shape = SubResource("CircleShape2D_4ph1h")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D" unique_id=469287236]
 texture = SubResource("AtlasTexture_x00qf")
+
+[node name="PickupSound" type="AudioStreamPlayer2D" parent="." unique_id=1113397666]
+stream = ExtResource("3_xkwnr")
+volume_db = 1.0

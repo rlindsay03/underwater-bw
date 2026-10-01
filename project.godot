@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Underwater-BW"
-run/main_scene="uid://bkumngwh6h2ac"
+run/main_scene="uid://bjw8p1o6bnpeo"
 config/features=PackedStringArray("4.7", "Forward Plus")
 
 [autoload]

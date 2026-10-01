@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://2at4545my2nj" path="res://scenes/Player.tscn" id="6_efxa6"]
 [ext_resource type="Script" uid="uid://bl2pig5w5wsrt" path="res://scripts/level2_exit_point.gd" id="8_6a5i7"]
 [ext_resource type="PackedScene" uid="uid://2mqkpy74rrjn" path="res://scenes/Material.tscn" id="9_gkfbt"]
+[ext_resource type="AudioStream" uid="uid://b8ua72qt8yvus" path="res://assets/audio/Battle Encounter.ogg" id="11_akdx8"]
 
 [sub_resource type="Gradient" id="Gradient_kek77"]
 offsets = PackedFloat32Array(0.12, 0.424, 0.764)
@@ -4073,6 +4074,10 @@ position = Vector2(412, 200)
 
 [node name="Sprite2D" parent="material25/CollisionShape2D" parent_id_path=PackedInt32Array(512213567, 1340174343) index="0" unique_id=469287236]
 texture = SubResource("AtlasTexture_67q1t")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1071310101]
+stream = ExtResource("11_akdx8")
+autoplay = true
 
 [editable path="material2"]
 [editable path="material6"]

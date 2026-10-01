@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://ggmu43lmusji" path="res://scripts/weave.gd" id="1_d8vqe"]
 [ext_resource type="Texture2D" uid="uid://disn7x5e6pqrk" path="res://assets/sprites/player/weava.png" id="2_k6yd2"]
 [ext_resource type="PackedScene" uid="uid://dco8ma3y0yl0c" path="res://scenes/PauseMenu.tscn" id="2_t0ppb"]
+[ext_resource type="AudioStream" uid="uid://b8ua72qt8yvus" path="res://assets/audio/Battle Encounter.ogg" id="4_2nj42"]
+[ext_resource type="AudioStream" uid="uid://b50wyrolmctd4" path="res://assets/audio/Unlock.mp3" id="5_jjm2l"]
+[ext_resource type="AudioStream" uid="uid://doqrnduawfemg" path="res://assets/audio/Electrocuted 2.mp3" id="6_6r1md"]
 
 [sub_resource type="Gradient" id="Gradient_kek77"]
 offsets = PackedFloat32Array(0.12, 0.424, 0.764)
@@ -275,5 +278,15 @@ offset_bottom = -0.028015137
 grow_horizontal = 2
 grow_vertical = 2
 text = "Continue"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1420737429]
+stream = ExtResource("4_2nj42")
+autoplay = true
+
+[node name="SuccessSound" type="AudioStreamPlayer2D" parent="." unique_id=664821121]
+stream = ExtResource("5_jjm2l")
+
+[node name="FailSound" type="AudioStreamPlayer2D" parent="." unique_id=1139811942]
+stream = ExtResource("6_6r1md")
 
 [connection signal="pressed" from="ContinueButton1" to="." method="_on_continue_button_1_pressed"]

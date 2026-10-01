@@ -9,6 +9,8 @@ extends Control
 @onready var crunch_label: Label = $Label
 @onready var pause_menu: Control = $PauseMenu
 @onready var continue_button: Button = $ContinueButton2
+@onready var success_sound: AudioStreamPlayer2D = $SuccessSound
+@onready var fail_sound: AudioStreamPlayer2D = $FailSound
 
 
 const DIRECTIONS = ["left", "right", "up", "down"]
@@ -100,8 +102,10 @@ func _register_result(correct: bool) -> void:
 	if correct:
 		correct_hits += 1
 		player.play("weave_success")
+		success_sound.play()
 	else:
 		player.play("weave_fail")
+		fail_sound.play()
 	current_index += 1
 	score_label.text = "Hits: %d/%d" % [correct_hits, sequence.size()]
 	_show_current_prompt()
